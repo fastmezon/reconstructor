@@ -23,4 +23,22 @@ describe CoefCalc do
 
   end
 
+  describe '.calc' do
+    let(:expected_result) { 0.75 }
+    let(:delta) { 0.0001 }
+
+    let(:xb) { 1 }
+    let(:yb) { 0 }
+    let(:s_xt) { 0 }
+    let(:s_xb) { 1 }
+    let(:h) { 1000 }
+    let(:f) { Math::PI*1.5+Math.asin(1/5**0.5) }
+
+    it { expect(subject).to respond_to(:calc).with(6).arguments }
+
+    it "return correct coefficient" do
+      result = subject.calc(xb,yb,s_xt,s_xb,h,f)
+      expect((subject.calc(xb,yb,s_xt,s_xb,h,f) - expected_result).abs < delta).to eql(true)
+    end
+  end
 end

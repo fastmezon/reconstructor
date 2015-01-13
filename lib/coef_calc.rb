@@ -34,15 +34,21 @@ module CoefCalc
       [xb, yb]
     ]
 
+
+
    rotated_coordinates = coordinates.map { |pt| [Utils.x_rotate(pt[0],pt[1],f), Utils.y_rotate(pt[0],pt[1],f)] }
-    require 'pry'
-    binding.pry
     coordinates_string = rotated_coordinates.map { |c| c.join(' ') }.join(', ')
 
     wkt_string = "POLYGON((#{coordinates_string}))"
 
     @@wkt_reader.read(wkt_string)
 
+  end
+
+  def self.calc(xb,yb,s_xt,s_xb,h,f)
+    pixel = gen_pixel(xb,yb,1)
+    scope = gen_scope(s_xt,s_xb,h,f)
+    pixel.intersection(scope).area
   end
 
 end
