@@ -1,1 +1,1 @@
-#TODO: add some code
+require_relative 'coef_calc'

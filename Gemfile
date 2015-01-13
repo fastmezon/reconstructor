@@ -1,4 +1,6 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "ruby-geometry", require: 'geometry'
+gem 'ffi-geos'
+gem 'pry'
+gem "rspec"
