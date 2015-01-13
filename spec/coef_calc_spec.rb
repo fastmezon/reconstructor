@@ -40,5 +40,10 @@ describe CoefCalc do
       result = subject.calc(xb,yb,s_xt,s_xb,h,f)
       expect((subject.calc(xb,yb,s_xt,s_xb,h,f) - expected_result).abs < delta).to eql(true)
     end
+
+    it 'return zero if no intersection' do
+      result = subject.calc(100,-10,s_xt,s_xb,h,f)
+      expect((subject.calc(xb,yb,s_xt,s_xb,h,f) - expected_result).abs < delta).to eql(true)
+    end
   end
 end
