@@ -4,6 +4,8 @@ module CoefCalc
 
   @@wkt_reader = Geos::WktReader.new
 
+  # Generates rectangle that represents
+  # pixel in studied area
   def self.gen_pixel(xb,yb,l)
     xt = xb+l
     yt = yb+l
@@ -22,6 +24,9 @@ module CoefCalc
     @@wkt_reader.read(wkt_string)
   end
 
+  # Generates rectangle that represents
+  # detectors scope of view should be much bigger
+  # then linear size of studied ared
   def self.gen_scope(xt,xb,h,f)
     yb = h
     yt = -h
@@ -45,6 +50,7 @@ module CoefCalc
 
   end
 
+  # Calculates coefficient
   def self.calc(xb,yb,s_xt,s_xb,h,f)
     pixel = gen_pixel(xb,yb,1)
     scope = gen_scope(s_xt,s_xb,h,f)
@@ -53,6 +59,8 @@ module CoefCalc
 
 end
 
+
+# Math shortcuts for rotation
 module  Utils
   def self.x_rotate(x0,y0,f)
     x0*Math.cos(f) - y0*Math.sin(f)
